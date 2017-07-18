@@ -21,4 +21,4 @@ def swap (list, a, b):
 def compare(list, a, b):
     return (list[a] - list[b])
 
-insertion_sort([6,0,4,2,5,1,14,10,29,98,56,85,9,33])
+insertion_sort([6,0,4,2,5,1,14,10,29,98])
