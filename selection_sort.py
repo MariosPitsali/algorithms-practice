@@ -11,14 +11,16 @@ def swap(lst, a, b):
     d = lst[b]
     lst[a] = d
     lst[b] = c
-    
-for i in range(0, len(list)-1):
-    m = i
-    for j in range(i+1, len(list)):
-        result = compare(list[j], list[m])
-        if result < 0:
-            m = j
-    swap(list, i, m)
-        
-print (list)
+def selection_sort(list):    
+    for i in range(0, len(list)-1):
+        m = i
+        for j in range(i+1, len(list)):
+            result = compare(list[j], list[m])
+            if result < 0:
+                m = j
+        if i != m:
+            swap(list, i, m)
+    print (list)
+
+selection_sort(list)
 
