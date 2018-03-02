@@ -22,5 +22,7 @@ def swap (list, a, b):
 
 def compare(list, a, b):
     return (list[a] - list[b])
+            
 
+            
 insertion_sort([0,1,2,3,4,5,14,10,29,98])
