@@ -45,4 +45,6 @@ print (my_range)
 
 for i in my_range:
     print (i)
-    
+lst = ["mar", "ior", "pitssa"]
+text = " ".join(lst)
+print (text)
