@@ -8,7 +8,7 @@ def jas(word_string):
     word_lst[i] = guess
     word_string = "".join(word_lst)
     return (word_string)
-words = ["dangerous", "harem","precious","incredible","peculiar","irreversible", "uninterrupted", "begging", "antisocial", "carnivore", "veganism", "creation"]
+words = ["dangerous", "harem", "uninterrupted", "begging", "antisocial", "carnivore", "veganism", "creation"]
 num = random.randint(0,len(words)-1)
 
 word = words[num]
@@ -18,7 +18,7 @@ trys = 0
 while word_string != word:
     
     guesses = []
-    guess = input("Please guess a letter, or print quit to exit : ").lower()
+    guess = input("Please guess a letter, or print quit to exit : ")
     if guess == "quit":
             break
     elif len(guess) > 1:
@@ -33,8 +33,8 @@ while word_string != word:
                         word_string = jas(word_string)
                 print(word_string)
             else:
-                print("Wrooong! {} tries left".format(5-trys))
                 trys += 1
+                print("Wrooong! {} tries left".format(5-trys))
                 
         else:
             print("You have already guessed this one!")
