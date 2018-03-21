@@ -12,7 +12,7 @@
 # jordan._set_lives(-1)
 # print (jordan)
 
-from enemy import Enemy, Troll, Vampyre
+from enemy import Enemy, Troll, Vampyre, VampyreKing
 
 random_monster = Enemy("Basic Enemy", 12, 1)
 random_monster.take_damage(4)
@@ -38,7 +38,7 @@ print (another_troll)
 # while vlad.alive:
 #     vlad.take_damage(1)
 #     print (vlad)
-#     
-vlad.lives = 0
-vlad.hit_points = 1
-print (vlad)
+lich = VampyreKing("Overlord")
+print (lich)
+lich.take_damage(40)
+print (lich)
