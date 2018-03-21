@@ -35,6 +35,10 @@ print ("*" * 40)
 another_troll.take_damage(30)
 print (another_troll)
 
-while vlad.alive:
-    vlad.take_damage(1)
-    print (vlad)
+# while vlad.alive:
+#     vlad.take_damage(1)
+#     print (vlad)
+#     
+vlad.lives = 0
+vlad.hit_points = 1
+print (vlad)
