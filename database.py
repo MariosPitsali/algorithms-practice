@@ -25,7 +25,6 @@ for name, phone, email in cursor:
 
 cursor.close()
 #if you fail to commit the changes they will be lost wehn you close the connection
-db.commit()
 db.close()
 #querying the database with python
 
