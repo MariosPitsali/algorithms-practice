@@ -1,7 +1,7 @@
 #exceptions challenge
 import sys
 def division(n, m):
-    return (n//m)
+    return (n/m)
 
 def request_input():
     while True:

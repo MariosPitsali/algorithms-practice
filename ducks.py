@@ -4,7 +4,7 @@ class Wing(object):
         self.ratio = ratio
         
     def fly(self):
-        if self.ration > 1:
+        if self.ratio > 1:
             print ("Weee, this is fun!")
         elif self.ratio == 1:
             print ("This is hard work, but I'm flying")
@@ -27,6 +27,8 @@ class Duck(object):
     def quack(self):
         print ("Quack Quack")
 
+    def fly(self):
+        self._wing.fly()
 class Penguin(object):
     
     def walk(self):
@@ -37,7 +39,25 @@ class Penguin(object):
         
     def quack(self):
         print ("Are you having a laugh on a penguin?")
-
+class Flock(object):
+    
+    def __init__(self):
+        self.flock = []
+        
+    def add_duck(self,duck: Duck) -> None:
+        self.flock.append(duck)
+    
+    def migrate(self):
+        problem = None
+        for duck in self.flock:
+            try:
+                duck.fly()
+            except AttributeError as e:
+                print ("one duck down")
+                problem = e
+                #raise
+        if problem:
+            raise problem
 def test_duck(duck):
     duck.walk()
     duck.swim()
@@ -46,7 +66,3 @@ def test_duck(duck):
 if __name__ =="__main__":
     donald = Duck()
     donald.fly()
-#     test_duck(donald)
-#     percy = Penguin()
-#     test_duck(percy)
-    
