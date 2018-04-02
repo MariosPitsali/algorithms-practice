@@ -1,4 +1,4 @@
-from ducks import Duck, Penguin, Flock, Wing
+from ducks import Duck, Penguin, Flock, Wing, Mallard
 
 flock = Flock()
 donald = Duck()
@@ -8,7 +8,7 @@ duck2 = Duck()
 duck3 = Duck()
 duck4 = Duck()
 duck5 = Duck()
-percy = Penguin()
+percy = Mallard()
 
 flock.add_duck(donald)
 flock.add_duck(daisy)

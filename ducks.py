@@ -29,6 +29,9 @@ class Duck(object):
 
     def fly(self):
         self._wing.fly()
+
+class Mallard(Duck):
+    pass
 class Penguin(object):
     
     def walk(self):
@@ -45,7 +48,8 @@ class Flock(object):
         self.flock = []
         
     def add_duck(self,duck: Duck) -> None:
-        self.flock.append(duck)
+        if isinstance(duck,Duck):
+            self.flock.append(duck)
     
     def migrate(self):
         problem = None
