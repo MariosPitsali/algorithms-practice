@@ -12,3 +12,4 @@ pytz = "*"
 
 [dev-packages]
 
+sqlite-web = "*"

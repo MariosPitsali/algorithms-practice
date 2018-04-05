@@ -1,0 +1,1 @@
+web: sqlite_web --port $PORT accounts.sqlite

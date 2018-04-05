@@ -1,9 +1,13 @@
 import sqlite3
+import datetime
+import pytz
 
-db = sqlite3.connect("accounts.sqlite")
+db = sqlite3.connect("accounts.sqlite", detect_types = sqlite3.PARSE_DECLTYPES)
 db.execute("CREATE TABLE IF NOT EXISTS accounts(name TEXT PRIMARY KEY NOT NULL, balance INTEGER NOT NULL)")
-db.execute ("CREATE TABLE IF NOT EXISTS transactions (time TIMESTAMP NOT NULL, account TEXT NOT NULL, amount INTEGER NOT NULL, PRIMARY KEY(time, account))")
-
+db.execute ("CREATE TABLE IF NOT EXISTS history (time TIMESTAMP NOT NULL, account TEXT NOT NULL, amount INTEGER NOT NULL, PRIMARY KEY(time, account))")
+db.execute("CREATE VIEW IF NOT EXISTS localhistory  AS SELECT strftime('%Y-%m-%d %H:%M:%f', history.time, 'localtime') AS localtime,"
+        "history.account, history.amount FROM history ORDER BY history.time")
+    
 class Account(object):
     
     def __init__(self, name: str, opening_balance:int = 0):
@@ -22,21 +26,43 @@ class Account(object):
     def show_balance(self):
         print ("Balance on account {0.name} is {0._balance}".format(self))
         
+    def current_time(self):
+        #return pytz.utc.localize(datetime.datetime.utcnow())
+        return 1
     def deposit(self, amount:int) ->float:
         if amount > 0.0:
-            self._balance += amount
+#             new_balance = self._balance + amount
+#             deposit_time = self.current_time()
+#             db.execute("UPDATE accounts SET balance = ? WHERE (name = ?)", (new_balance, self.name))
+#             db.execute("INSERT INTO history VALUES (?, ?, ?)", (deposit_time, self.name, amount))
+#             db.commit()
+#             self._balance = new_balance
+            self._save_update(amount)
             print("{:.2f} deposited".format(amount/100))
         return self._balance
     
     def withdraw (self, amount:int) -> float:
         if  self._balance > amount > 0.0:
-            self._balance -= amount
-            print ("{:.2f} withdrawn".format(amount/100))
+#             new_balance = self.balance - amount
+#             withdrawal_time = self.current_time()
+#             db.execute("UPDATE accounts SET balance = ? WHERE (name=?)", (new_balance, self.name))
+#             db.execute("INSERT INTO history VALUES(?,?,?)", (withdrawal_time, self.name, -amount))
+#             print ("{:.2f} withdrawn".format(amount/100))
+            self._save_update(-amount)
+            print("{:.2f} withdrawn".format(amount/100))
             return self._balance
         else:
             print ("Amount must be more than zero and less than your account balance.")
             return self._balance
         
+    def _save_update(self, amount):
+        new_balance = self._balance + amount
+        deposit_time = self.current_time()
+        db.execute("UPDATE accounts SET balance = ? WHERE (name = ?)", (new_balance, self.name))
+        db.execute("INSERT INTO history VALUES (?, ?, ?)", (deposit_time, self.name, amount))
+        db.commit()
+        self._balance = new_balance
+
 if __name__ == "__main__":
     john = Account("John")
     john.deposit(1010)
@@ -48,5 +74,8 @@ if __name__ == "__main__":
     graham = Account("Graham", 9000)
     eric = Account("Eric", 7000)
     jord = Account("Jordan", 8000)
+    jord.deposit(1000)
+    eric.deposit(2000)
+    eric.withdraw(90000)
     db.close()
     
