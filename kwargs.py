@@ -8,3 +8,5 @@ def print_backwards(*args, **kwargs):
             print (arg[::-1], **kwargs)
 with open("backwards.txt", 'w') as backwards:
     print (print_backwards("awesome", "jello", "shot", end= "\n"))
+    
+print (print_backwards("awesome", "jello", "shot", end= "\n", sep="|"))
