@@ -9,12 +9,11 @@ def my_range(n: int):
         print ("my_range is returning {}".format(start))
         yield start
         start += 1
-_ = input("line 12")
 #big_range = range(10000)
 #print(big_range)
 big_range = my_range(5)
-_ = input("line 16")
-
+_ = input("line 15")
+print(next(big_range))
 print ("big range is {} bytes in size".format(sys.getsizeof(big_range)))
 #create list that contains all avalues in range
 big_list = []
