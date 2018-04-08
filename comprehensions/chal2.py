@@ -16,7 +16,7 @@
 # Finally, wrap your comprehension in a for loop, and print the lists of all the locations that lead to each of the
 # other locations in turn.
 # In other words, use a for loop to run the comprehension for each of the keys in the locations dictionary.
- 
+import timeit
 
 locations = {0: "You are sitting in front of a computer learning Python",
              1: "You are standing at the end of a road before a small brick building",
