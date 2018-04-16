@@ -23,8 +23,8 @@ class Battleship(Ship):
 
 class Cruiser(Ship):
     
-    def __init__(self):
-        super().__init__(name = "Cruiser", hit_points = 3)
+    def __init__(self, name = "Cruiser"):
+        super().__init__(name =  name, hit_points = 3)
 
 
 class Submarine(Ship):
