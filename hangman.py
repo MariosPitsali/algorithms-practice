@@ -3,6 +3,14 @@
 
 import random
 
+dict = {
+    0: "___  ",
+    1: "| O  ",
+    2: "|\|/ ",
+    3: "| |  ",
+    4: "|/ \ ",
+    5: "_dead_"
+}
 def jas(word_string):
     word_lst = list(word_string)
     word_lst[i] = guess
@@ -34,12 +42,12 @@ while word_string != word:
                 print(word_string)
             else:
                 trys += 1
-                print("Wrooong! {} tries left".format(5-trys))
-                
+                print("Wrooong! {} tries left".format(6-trys))
+                for i in range(trys):
+                    print (dict[i])
         else:
             print("You have already guessed this one!")
-        
-    if trys == 5:
+    if trys == 6:
         print("The word was {}. Please try again some other time".format(word))
         break
 else:
